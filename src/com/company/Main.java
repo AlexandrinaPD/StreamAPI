@@ -155,23 +155,28 @@ public class Main {
                 "Яковлева Ксения Евгеньевна"};
 
         for (int i = 0; i < 20; i++) {
-            Student student = new Student(fios[i], 11 + (int) (Math.random() * 55), "First", 5 + (int) (Math.random()*100));
+            Student student = new Student(fios[i], 11 + (int) (Math.random() * 55), "First",
+                    5 + (int) (Math.random() * 100));
             students.add(student);
         }
         for (int i = 20; i < 40; i++) {
-            Student student = new Student(fios[i], 11 + (int) (Math.random() * 55), "Second", 5 + (int) (Math.random()*100));
+            Student student = new Student(fios[i], 11 + (int) (Math.random() * 55), "Second",
+                    5 + (int) (Math.random() * 100));
             students.add(student);
         }
         for (int i = 40; i < 60; i++) {
-            Student student = new Student(fios[i], 11 + (int) (Math.random() * 55), "Third", 5 + (int) (Math.random()*100));
+            Student student = new Student(fios[i], 11 + (int) (Math.random() * 55), "Third",
+                    5 + (int) (Math.random() * 100));
             students.add(student);
         }
         for (int i = 60; i < 80; i++) {
-            Student student = new Student(fios[i], 11 + (int) (Math.random() * 55), "Fourth", 5 + (int) (Math.random()*100));
+            Student student = new Student(fios[i], 11 + (int) (Math.random() * 55), "Fourth",
+                    5 + (int) (Math.random() * 100));
             students.add(student);
         }
         for (int i = 80; i < 100; i++) {
-            Student student = new Student(fios[i], 11 + (int) (Math.random() * 55), "Fifth", 5 + (int) (Math.random()*100));
+            Student student = new Student(fios[i], 11 + (int) (Math.random() * 55), "Fifth",
+                    5 + (int) (Math.random() * 100));
             students.add(student);
         }
 
@@ -180,15 +185,19 @@ public class Main {
             System.out.println(student);
         }
 
-        List<String> newList = students.stream().filter((a) -> a.getAge()<16).map((s)-> s.getFullName().split(" ")[0]).collect(Collectors.toList());
+        List<String> newList = students.stream().filter((a) -> a.getAge() < 16)
+                .map((s) -> s.getFullName()
+                        .split(" ")[0])
+                .collect(Collectors.toList());
         System.out.println(newList);
 
 
         List<OptionalDouble> ocen = Collections.singletonList(students.stream().mapToInt(Student::getPoints).average());
         System.out.println(ocen);
 
+
         Function<Student, Employee> convertToEmployee = (student) -> new Employee(student.getFullName(), student.getAge());
-        Employee apply = convertToEmployee.apply()
+        Employee apply = convertToEmployee.apply();
 
 
     }
