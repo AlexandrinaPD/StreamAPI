@@ -187,7 +187,8 @@ public class Main {
         List<OptionalDouble> ocen = Collections.singletonList(students.stream().mapToInt(Student::getPoints).average());
         System.out.println(ocen);
 
-
+        Function<Student, Employee> convertToEmployee = (student) -> new Employee(student.getFullName(), student.getAge());
+        Employee apply = convertToEmployee.apply()
 
 
     }
