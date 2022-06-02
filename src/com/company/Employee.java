@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.List;
+
 public class Employee {
     private String name;
     private String surname;
@@ -14,6 +16,10 @@ public class Employee {
     }
 
     public Employee(String fullName, int age) {
+
+    }
+
+    public Employee(List<String> name, List<String> surname, List<String> patronymic, int age) {
 
     }
 

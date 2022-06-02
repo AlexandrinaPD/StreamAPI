@@ -196,8 +196,26 @@ public class Main {
         System.out.println(ocen);
 
 
-        Function<Student, Employee> convertToEmployee = (student) -> new Employee(student.getFullName(), student.getAge());
-        Employee apply = convertToEmployee.apply();
+        List<String> surname = students.stream().map((s) -> s.getFullName().split(" ")[0]).collect(Collectors.toList());
+        List<String> name = students.stream().map((s) -> s.getFullName().split(" ")[1]).collect(Collectors.toList());
+        List<String> patronymic = students.stream().map((s) -> s.getFullName().split(" ")[2]).collect(Collectors.toList());
+        List<Integer> age = students.stream().map((s) -> s.getAge()).collect(Collectors.toList());
+
+
+
+        System.out.println(surname);
+        System.out.println(name);
+        System.out.println(patronymic);
+
+
+        Function<Student, Employee> convertToEmployee = (student) -> new Employee(name, surname, patronymic, student.getAge());
+        System.out.println(convertToEmployee);
+
+
+
+
+
+
 
 
     }
