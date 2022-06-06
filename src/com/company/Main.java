@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -45,11 +44,12 @@ public class Main {
         Optional<Car> MAXSPEEDCAR = cars.stream().filter((c) -> "red".equalsIgnoreCase(c.getColor()))
                 .max((car1, car2) -> Integer.compare(car1.getMaxSpeed(), car2.getMaxSpeed()));
 
-        if (MAXSPEEDCAR.isPresent())
+        if (MAXSPEEDCAR.isPresent()) {
             System.out.println(MAXSPEEDCAR.get());
-        else
+        } else {
             System.out.println("Not examples");
-        System.out.println(MAXSPEEDCAR);
+            System.out.println(MAXSPEEDCAR);
+        }
 
 
         List<Student> students = new ArrayList<>();
@@ -201,19 +201,17 @@ public class Main {
         List<String> patronymic = students.stream().map((s) -> s.getFullName().split(" ")[2]).collect(Collectors.toList());
         List<Integer> age = students.stream().map((s) -> s.getAge()).collect(Collectors.toList());
 
+        List<Employee> convertToEmployee = students.stream().map((s) -> new Employee(s.getFullName().split(" ")[0],
+                s.getFullName().split(" ")[1],
+                s.getFullName().split(" ")[2],
+                s.getAge()))
+                .collect(Collectors.toList());
 
+        System.out.println(convertToEmployee);
 
         System.out.println(surname);
         System.out.println(name);
         System.out.println(patronymic);
-
-
-        Function<Student, Employee> convertToEmployee = (student) -> new Employee(name, surname, patronymic, student.getAge());
-        System.out.println(convertToEmployee);
-
-
-
-
 
 
 
