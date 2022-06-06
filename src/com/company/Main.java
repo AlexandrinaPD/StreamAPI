@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -201,19 +202,16 @@ public class Main {
         List<String> patronymic = students.stream().map((s) -> s.getFullName().split(" ")[2]).collect(Collectors.toList());
         List<Integer> age = students.stream().map((s) -> s.getAge()).collect(Collectors.toList());
 
-        List<Employee> convertToEmployee = students.stream().map((s) -> new Employee(s.getFullName().split(" ")[0],
+        Function<Student, Employee> convert = (s) -> new Employee(s.getFullName().split(" ")[0],
                 s.getFullName().split(" ")[1],
                 s.getFullName().split(" ")[2],
-                s.getAge()))
-                .collect(Collectors.toList());
-
-        System.out.println(convertToEmployee);
-
-        System.out.println(surname);
-        System.out.println(name);
-        System.out.println(patronymic);
+                s.getAge());
+        List<Employee> convertToEmployee = students.stream().map((s) -> convert.apply(s)).collect(Collectors.toList());
 
 
+        for (Employee employee : convertToEmployee) {
+            System.out.println(employee);
+        }
 
 
     }

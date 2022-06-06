@@ -47,6 +47,6 @@ public class Employee {
                 ", surname='" + surname + '\'' +
                 ", patronymic='" + patronymic + '\'' +
                 ", age=" + age +
-                '}';
+                '}' + '\n';
     }
 }
